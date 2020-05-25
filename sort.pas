@@ -58,6 +58,49 @@ begin
 	end
 end;
 
+procedure ShakerSort(
+var
+	input :array of string;
+	length :uint32
+);
+var
+	lastSwap, j, left, right :uint32;
+	item :string;
+begin
+	left := 2;
+	right := length;
+	lastSwap := length;
+	repeat
+	begin
+		for j := right downto left do
+		begin
+			if input[j-1] > input[j] then
+			begin
+				item := input[j-1];
+				input[j-1] := input[j];
+				input[j] := item;
+				lastSwap := j;
+			end;
+		end;
+
+		left := lastSwap + 1;
+
+		for j := left to right do
+		begin
+			if input[j-1] > input[j] then
+			begin
+				item := input[j-1];
+				input[j-1] := input[j];
+				input[j] := item;
+				lastSwap := j;
+			end;
+		end;
+
+		right := lastSwap - 1;
+
+	end until left > right;
+end;
+
 const
 	maxInputLines = 1024;
 var
@@ -65,6 +108,6 @@ var
 	inputLength :uint32;
 begin
 	inputLength := ReadLines(input, maxInputLines);
-	BubbleSort(input, inputLength);
+	ShakerSort(input, inputLength);
 	WriteLines(input, inputLength);
 end.

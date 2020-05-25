@@ -11,6 +11,13 @@ My library of Pascal books has long since been scattered to the winds, but one b
 
 Is it a pain to work with compared to Python or C? Absolutely.
 
+## Conversions from Modula-2 to FreePascal
+
+* FreePascal is case insensitive
+* `begin` keyword added to the start of scope blocks
+* `cardinal` type replaced with `uint32`
+* `for ... by -1` replaced with `downto`
+
 ## References
 
 * [FreePascal Docs](https://www.freepascal.org/docs.html)
