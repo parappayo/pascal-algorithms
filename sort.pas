@@ -143,6 +143,30 @@ begin
 	end;
 end;
 
+procedure InsertionSort(
+var
+	input :array of string;
+	length :uint32
+);
+var
+	i, j :uint32;
+	nextValue :string;
+begin
+	for i := 2 to length do
+	begin
+		nextValue := input[i];
+		j := i - 1;
+
+		while (j > 0) and (nextValue < input[j]) do
+		begin
+			input[j+1] := input[j];
+			j := j - 1;
+		end;
+
+		input[j+1] := nextValue;
+	end;
+end;
+
 const
 	maxInputLines = 1024;
 var
@@ -150,6 +174,6 @@ var
 	inputLength :uint32;
 begin
 	inputLength := ReadLines(input, maxInputLines);
-	SelectionSort(input, inputLength);
+	InsertionSort(input, inputLength);
 	WriteLines(input, inputLength);
 end.
