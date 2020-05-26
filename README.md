@@ -11,6 +11,24 @@ My library of Pascal books has long since been scattered to the winds, but one b
 
 Is it a pain to work with compared to Python or C? Absolutely.
 
+## Why is this code so hard to read?
+
+Mostly because it doesn't follow [functional programming](https://en.wikipedia.org/wiki/Functional_programming) paradigms. That may sound glib, but a lot of these algorithms type problems are much easier to follow when implemented as a Lisp-like decomposition into a chain of data transforms.
+
+Another reason is because Pascal is fairly verbose. It may feel clumsy, but among the advantages are that there are fewer ways to get clever with the syntax, and it's a little easier on compiler implementors. Still, if you don't like what you see, be thankful that you're coding in the 21st century.
+
+Modula improvements to the Pascal language would have helped matters a little bit but it seems like Modula only ever caught on in expert circles and then died off.
+
+## I know C, what am I looking at?
+
+If you squint you can kinda make out the C-like nature of Pascal (or their shared Algol lineage, perhaps.)
+
+* `begin` and `end` enclose scope, like `{` and `}`
+* local variables go at the top of a function, using a `var` block
+* `:=` is assignment `=`
+* `=` is comparison `==`
+* `procedure` has no return value, `function` does
+
 ## Conversions from Modula-2 to FreePascal
 
 * FreePascal is case insensitive

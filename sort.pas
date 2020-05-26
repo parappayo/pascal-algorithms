@@ -16,7 +16,7 @@ begin
 		input[index] := inputLine;
 		index := index + 1;
 	end;
-	ReadLines := index;
+	ReadLines := index-1;
 end;
 
 procedure WriteLines(
@@ -33,6 +33,29 @@ begin
 		WriteLn(input[index]);
 		index := index + 1;
 	end;
+end;
+
+function FindSmallest(
+	input :array of string;
+	startIndex :uint32;
+	stopIndex :uint32
+) :uint32;
+var
+	i, retval :uint32;
+	smallest :string;
+begin
+	retval := startIndex;
+	smallest := input[startIndex];
+
+	for i := startIndex+1 to stopIndex do
+	begin
+		if input[i] < smallest then
+		begin
+			smallest := input[i];
+			retval := i;
+		end;
+	end;
+	FindSmallest := retval;
 end;
 
 procedure BubbleSort(
@@ -101,6 +124,25 @@ begin
 	end until left > right;
 end;
 
+procedure SelectionSort(
+var
+	input :array of string;
+	length :uint32
+);
+var
+	i, smallestIndex :uint32;
+	smallestValue :string;
+begin
+	for i := 1 to length-1 do
+	begin
+		smallestIndex := FindSmallest(input, i, length);
+		smallestValue := input[smallestIndex];
+
+		input[smallestIndex] := input[i];
+		input[i] := smallestValue;
+	end;
+end;
+
 const
 	maxInputLines = 1024;
 var
@@ -108,6 +150,6 @@ var
 	inputLength :uint32;
 begin
 	inputLength := ReadLines(input, maxInputLines);
-	ShakerSort(input, inputLength);
+	SelectionSort(input, inputLength);
 	WriteLines(input, inputLength);
 end.
